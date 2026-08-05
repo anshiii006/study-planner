@@ -54,3 +54,45 @@ body {
     color: #666;
     font-size: 18px;
 }
+.dashboard {
+    padding: 40px 8%;
+    text-align: center;
+}
+
+.dashboard h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+}
+
+.dashboard-cards {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.card {
+    background-color: white;
+    width: 220px;
+    padding: 25px;
+
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    font-size: 17px;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.card p {
+    font-size: 30px;
+    font-weight: bold;
+    color: #4f46e5;
+}
