@@ -200,4 +200,23 @@ body {
 
 .task-card p {
     margin: 8px 0;
+}.delete-btn {
+    margin-top: 15px;
+    padding: 10px 18px;
+
+    background-color: #ef4444;
+    color: white;
+
+    border: none;
+    border-radius: 8px;
+
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+
+    transition: background-color 0.3s;
+}
+
+.delete-btn:hover {
+    background-color: #dc2626;
 }

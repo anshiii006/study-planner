@@ -30,7 +30,19 @@ taskList.innerHTML += `
         <p><strong>Subject:</strong> ${subjectName}</p>
         <p><strong>Due Date:</strong> ${date}</p>
         <p><strong>Priority:</strong> ${taskPriority}</p>
+        <button class="delete-btn">Delete</button>
     </div>
 `;
 taskForm.reset();
+const deleteButtons = document.querySelectorAll(".delete-btn");
+
+deleteButtons.forEach(function(button) {
+
+    button.addEventListener("click", function() {
+
+        this.parentElement.remove();
+
+    });
+
+});
 });
