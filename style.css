@@ -159,3 +159,29 @@ body {
 #taskForm button:hover {
     background-color: #4338ca;
 }
+.tasks-section {
+    width: 84%;
+    max-width: 900px;
+    margin: 40px auto 80px;
+}
+
+.tasks-section h2 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+#taskList {
+    background: white;
+    min-height: 180px;
+    border-radius: 12px;
+    padding: 25px;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+
+.empty-message {
+    text-align: center;
+    color: gray;
+    font-size: 18px;
+    margin-top: 60px;
+}
