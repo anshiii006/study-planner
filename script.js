@@ -19,7 +19,12 @@ console.log(task);
 console.log(subjectName);
 console.log(date);
 console.log(taskPriority);
-taskList.innerHTML = `
+const emptyMessage = document.querySelector(".empty-message");
+
+if (emptyMessage) {
+    emptyMessage.remove();
+}
+taskList.innerHTML += `
     <div class="task-card">
         <h3>${task}</h3>
         <p><strong>Subject:</strong> ${subjectName}</p>
@@ -27,5 +32,5 @@ taskList.innerHTML = `
         <p><strong>Priority:</strong> ${taskPriority}</p>
     </div>
 `;
-
+taskForm.reset();
 });
