@@ -28,6 +28,7 @@ if (emptyMessage) {
     emptyMessage.remove();
 }
 taskList.innerHTML += `
+totalTasks.textContent = document.querySelectorAll(".task-card").length;
     <div class="task-card">
         <h3>${task}</h3>
         <p><strong>Subject:</strong> ${subjectName}</p>
