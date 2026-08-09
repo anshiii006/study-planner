@@ -5,6 +5,9 @@ const dueDate = document.getElementById("dueDate");
 const priority = document.getElementById("priority");
 
 const taskList = document.getElementById("taskList");
+const totalTasks = document.getElementById("totalTasks");
+const completedTasks = document.getElementById("completedTasks");
+const pendingTasks = document.getElementById("pendingTasks");
 taskForm.addEventListener("submit", function(event) {
 
     event.preventDefault();
