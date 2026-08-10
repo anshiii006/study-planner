@@ -1,3 +1,5 @@
+let tasks = [];
+localStorage.setItem("studyTasks", JSON.stringify(tasks));
 const taskForm = document.getElementById("taskForm");
 const taskName = document.getElementById("taskName");
 const subject = document.getElementById("subject");
