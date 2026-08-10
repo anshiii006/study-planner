@@ -1,4 +1,5 @@
 let tasks = JSON.parse(localStorage.getItem("studyTasks")) || [];
+
 const taskForm = document.getElementById("taskForm");
 const taskName = document.getElementById("taskName");
 const subject = document.getElementById("subject");
@@ -9,84 +10,136 @@ const taskList = document.getElementById("taskList");
 const totalTasks = document.getElementById("totalTasks");
 const completedTasks = document.getElementById("completedTasks");
 const pendingTasks = document.getElementById("pendingTasks");
+
+
+// Add New Task
 taskForm.addEventListener("submit", function(event) {
 
     event.preventDefault();
 
-    console.log("Task Added Button Clicked!");
     const task = taskName.value;
-const subjectName = subject.value;
-const date = dueDate.value;
-const taskPriority = priority.value;
-const newTask = {
-    name: task,
-    subject: subjectName,
-    dueDate: date,
-    priority: taskPriority,
-    completed: false
-};
+    const subjectName = subject.value;
+    const date = dueDate.value;
+    const taskPriority = priority.value;
 
-tasks.push(newTask);
+    const newTask = {
+        name: task,
+        subject: subjectName,
+        dueDate: date,
+        priority: taskPriority,
+        completed: false
+    };
 
-localStorage.setItem("studyTasks", JSON.stringify(tasks));
+    tasks.push(newTask);
 
-console.log(task);
-console.log(subjectName);
-console.log(date);
-console.log(taskPriority);
-const emptyMessage = document.querySelector(".empty-message");
+    localStorage.setItem("studyTasks", JSON.stringify(tasks));
 
-if (emptyMessage) {
-    emptyMessage.remove();
+    displayTasks();
+
+    taskForm.reset();
+
+});
+
+
+// Display Tasks
+function displayTasks() {
+
+    taskList.innerHTML = "";
+
+    if (tasks.length === 0) {
+
+        taskList.innerHTML = `
+            <p class="empty-message">
+                No study tasks added yet.
+            </p>
+        `;
+
+        updateCounters();
+        return;
+    }
+
+    tasks.forEach(function(task, index) {
+
+        taskList.innerHTML += `
+            <div class="task-card ${task.completed ? "completed" : ""}">
+
+                <h3>${task.name}</h3>
+
+                <p>
+                    <strong>Subject:</strong> ${task.subject}
+                </p>
+
+                <p>
+                    <strong>Due Date:</strong> ${task.dueDate}
+                </p>
+
+                <p>
+                    <strong>Priority:</strong> ${task.priority}
+                </p>
+
+                <button 
+                    class="complete-btn" 
+                    onclick="completeTask(${index})">
+                    ${task.completed ? "Undo" : "Complete"}
+                </button>
+
+                <button 
+                    class="delete-btn" 
+                    onclick="deleteTask(${index})">
+                    Delete
+                </button>
+
+            </div>
+        `;
+
+    });
+
+    updateCounters();
+
 }
-taskList.innerHTML += `
-totalTasks.textContent = document.querySelectorAll(".task-card").length;
-pendingTasks.textContent = document.querySelectorAll(".task-card").length;
-completedTasks.textContent = 0;
-    <div class="task-card">
-        <h3>${task}</h3>
-        <p><strong>Subject:</strong> ${subjectName}</p>
-        <p><strong>Due Date:</strong> ${date}</p>
-        <p><strong>Priority:</strong> ${taskPriority}</p>
-       <button class="complete-btn">Complete</button>
-<button class="delete-btn">Delete</button>
 
-    </div>
-`;
-taskForm.reset();
-const deleteButtons = document.querySelectorAll(".delete-btn");
 
-deleteButtons.forEach(function(button) {
+// Complete / Undo Task
+function completeTask(index) {
 
-    button.addEventListener("click", function() {
+    tasks[index].completed = !tasks[index].completed;
 
-        this.parentElement.remove();
+    localStorage.setItem("studyTasks", JSON.stringify(tasks));
 
-    });
+    displayTasks();
 
-});
-});
-const completeButtons = document.querySelectorAll(".complete-btn");
+}
 
-completeButtons.forEach(function(button) {
 
-    button.addEventListener("click", function() {
+// Delete Task
+function deleteTask(index) {
 
-        const taskCard = this.parentElement;
+    tasks.splice(index, 1);
 
-        taskCard.classList.toggle("completed");
+    localStorage.setItem("studyTasks", JSON.stringify(tasks));
 
-        const completedCount =
-            document.querySelectorAll(".task-card.completed").length;
+    displayTasks();
 
-        const totalCount =
-            document.querySelectorAll(".task-card").length;
+}
 
-        const pendingCount = totalCount - completedCount;
 
-        completedTasks.textContent = completedCount;
-        pendingTasks.textContent = pendingCount;
+// Update Dashboard Counters
+function updateCounters() {
 
-    });
+    const total = tasks.length;
 
-});
+    const completed = tasks.filter(function(task) {
+        return task.completed;
+    }).length;
+
+    const pending = total - completed;
+
+    totalTasks.textContent = total;
+    completedTasks.textContent = completed;
+    pendingTasks.textContent = pending;
+
+}
+
+
+// Load saved tasks when page opens
+displayTasks();
