@@ -29,6 +29,8 @@ if (emptyMessage) {
 }
 taskList.innerHTML += `
 totalTasks.textContent = document.querySelectorAll(".task-card").length;
+pendingTasks.textContent = document.querySelectorAll(".task-card").length;
+completedTasks.textContent = 0;
     <div class="task-card">
         <h3>${task}</h3>
         <p><strong>Subject:</strong> ${subjectName}</p>
