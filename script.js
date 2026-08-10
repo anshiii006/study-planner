@@ -64,6 +64,18 @@ completeButtons.forEach(function(button) {
 
         taskCard.classList.toggle("completed");
 
+        const completedCount =
+            document.querySelectorAll(".task-card.completed").length;
+
+        const totalCount =
+            document.querySelectorAll(".task-card").length;
+
+        const pendingCount = totalCount - completedCount;
+
+        completedTasks.textContent = completedCount;
+        pendingTasks.textContent = pendingCount;
+
     });
 
 });
+
