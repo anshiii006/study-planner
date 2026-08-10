@@ -1,5 +1,4 @@
-let tasks = [];
-localStorage.setItem("studyTasks", JSON.stringify(tasks));
+let tasks = JSON.parse(localStorage.getItem("studyTasks")) || [];
 const taskForm = document.getElementById("taskForm");
 const taskName = document.getElementById("taskName");
 const subject = document.getElementById("subject");
@@ -19,6 +18,17 @@ taskForm.addEventListener("submit", function(event) {
 const subjectName = subject.value;
 const date = dueDate.value;
 const taskPriority = priority.value;
+const newTask = {
+    name: task,
+    subject: subjectName,
+    dueDate: date,
+    priority: taskPriority,
+    completed: false
+};
+
+tasks.push(newTask);
+
+localStorage.setItem("studyTasks", JSON.stringify(tasks));
 
 console.log(task);
 console.log(subjectName);
@@ -80,4 +90,3 @@ completeButtons.forEach(function(button) {
     });
 
 });
-
