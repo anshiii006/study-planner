@@ -36,7 +36,9 @@ completedTasks.textContent = 0;
         <p><strong>Subject:</strong> ${subjectName}</p>
         <p><strong>Due Date:</strong> ${date}</p>
         <p><strong>Priority:</strong> ${taskPriority}</p>
-        <button class="delete-btn">Delete</button>
+       <button class="complete-btn">Complete</button>
+<button class="delete-btn">Delete</button>
+
     </div>
 `;
 taskForm.reset();
@@ -51,4 +53,17 @@ deleteButtons.forEach(function(button) {
     });
 
 });
+});
+const completeButtons = document.querySelectorAll(".complete-btn");
+
+completeButtons.forEach(function(button) {
+
+    button.addEventListener("click", function() {
+
+        const taskCard = this.parentElement;
+
+        taskCard.classList.toggle("completed");
+
+    });
+
 });
