@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: "Nunito Sans", sans-serif;
+    background: #D5D9DE;
+    font-size: 15px;
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+.noselection{
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select: none;
+}
+.app{
+    width: 400px;
+    height: 90vh;
+    background: #FFFFFF;
+    border-radius: 20px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+}
+.app .head{
+    padding: 20px 15px;
+    padding-bottom: 25px;
+    border-radius: 0 0 30px 30px;
+    background: #FFFFFF;
+    box-shadow: rgba(17, 12, 46, 0.08) 0px 18px 50px 0px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+.app .head .profile{
+    display: flex;
+    justify-content: space-between;
+}
+
+.app .head .profile .names h3{
+    font-size: 15px;
+    font-weight: normal;
+    padding-bottom: 2px;
+}
+.app .head .profile .names h4{
+    font-size: 18px;
+    font-weight: 700;
+}
+.app .head .profile .options{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+.app .head .profile .options button{
+    background: none;
+    border: none;
+    font-size: 25px;
+}
+.app .head .profile .options img{
+    width: 45px;
+    border-radius: 12px;
+}
+
+.app .head .months ul{
+    list-style: none;
+    padding: 15px 0;
+    position: relative;
+    display: flex;
+}
+.app .head .months ul::before{
+    content: "";
+    width: 60px;
+    height: 30px;
+    position: absolute;
+    left: 0;
+    z-index: 2;
+    background: #ffffff;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 89%);
+}
+.app .head .months ul::after{
+    content: "";
+    width: 60px;
+    height: 30px;
+    position: absolute;
+    right: 0;
+    z-index: 2;
+    background: #ffffff;
+    background: linear-gradient(275deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 89%);
+}
+.app .head .months ul li{    
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: center;
+    cursor: pointer;
+    color: #A6A6A6;
+}
+.app .head .months ul li.active {
+    background: #dbffef;
+    color: #3bc68f;
+}
+
+
+.app .head .days ul{
+    list-style: none;
+    display: flex;    
+}
+
+.app .head .days ul li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #F8F8F8;
+    padding: 10px 0;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.app .head .days ul li.active{
+    background: #3ac97b;
+    color: #FFFFFF;
+}
+.app .head .days ul li span{
+    font-weight: 200;
+    font-size: 14px;
+}
+
+/* Main Section */
+
+.main{
+    display: flex;
+    gap: 20px;
+    padding: 15px;    
+    margin-top: 10px;
+}
+.main .timeline{
+    width: 70px;
+}
+
+.main .timeline ul{
+    list-style: none;
+    font-size: 13px;  
+    position: relative;  
+}
+.main .timeline ul::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    background: repeating-linear-gradient(
+        to bottom,
+        #e8ebf0 0 6px,
+        transparent 6px 10px
+    );
+    pointer-events: none;
+    z-index: 0;
+
+}
+.main .timeline ul li{
+    height: 70px;
+    color: #A9AAAE;
+    white-space: nowrap;
+    position: relative;
+}
+.main .tasks{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.main .tasks .swipe-item{
+    width: 100%;
+    height: 60px;    
+    border-radius: 10px;
+    position: relative;    
+    box-shadow: 0 0 20px 2px rgba(144, 140, 152, 0.1);    
+    cursor: pointer;
+    overflow: hidden;
+}
+.main .tasks .swipe-item .check{
+    background: #38B37F;
+    width: 100%;
+    height: 60px;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    position: absolute;
+    z-index: 0;
+}
+.main .tasks .swipe-item .check .icon{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+    font-size: 15px;
+    background: rgba(0, 0, 0, 0.1);
+    margin-right: 15px;
+    cursor: pointer;
+}
+.main .tasks .swipe-item .content{
+    background:#FFFFFF;
+    width: calc(100% - 20px);
+    height: 40px;
+    padding: 10px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+    display: flex;    
+    gap: 10px;
+    transition: transform 0.2s ease;
+}
+.main .tasks .swipe-item .content .logo{
+    width: 40px;
+    height: 40px;
+    background: #b5cdea;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    font-size: 20px;
+    flex-shrink: 0;
+}
+.main .tasks .swipe-item .content .titles{    
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.main .tasks .swipe-item .content .titles h5{
+    font-size: 15px;
+}
+.main .tasks .swipe-item .content .titles h6{
+    font-size: 13px;
+    font-weight: 400;
+    color: #A8A8A8;
+}
+.main .tasks .swipe-item .content .titles span{
+    font-size: 12px;
+    color: #c23aeb;
+}
+
+.main .tasks .swipe-item.empty{
+    background: none;
+    box-shadow: none;
+}
+
+.app .menu{
+    background: #FFFFFF;
+    box-shadow: rgba(17, 12, 46, 0.08) 0 -18px 50px 0;
+    border-radius: 30px 30px 0 0;
+    position: sticky;
+    bottom: 0;
+    width: calc(100% - 30px);
+    padding: 20px 15px;    
+}
+
+.app .menu ul{
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.app .menu ul li{
+    display: flex;
+    align-items: center;
+    gap: 7px;    
+    padding: 10px 15px;
+    border-radius: 8px;
+    color: #a49fb4;
+    cursor: pointer;
+}
+.app .menu ul li i{
+    font-size: 25px;
+}
+.app .menu ul li span{
+    display: none;
+}
+.app .menu ul li.active{
+    background: #dbffef;
+    color: #38B37F;
+    font-weight: 600;
+}
+.app .menu ul li.active span{
+    display: flex;
+}

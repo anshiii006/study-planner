@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: "Nunito Sans", sans-serif;
+    color: #a1acc9;
+}
+.app{
+    width: 100%;
+    height: 100vh;
+    background: #061733;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.app .card {
+    width: 270px;
+    padding: 30px 20px;
+    background: #07182e;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.app .card .content{
+    padding: 5px;
+    z-index: 999;
+}
+.app .card .content h1{
+    color: rgb(0, 183, 255);
+    margin-bottom: 8px;
+}
+
+.app .card .content h3{
+    font-size: 22px;
+    color: #ca89ff;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #2d396a;
+    margin-bottom: 10px;
+}
+
+.app .card .content p{
+    line-height: 30px;
+}
+
+.app .card::before{
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 100px;
+    background-image: linear-gradient(90deg , rgb(0,183,255) , rgb(255,48,255));   
+    animation: animate 5s linear infinite; 
+    transition: all 0.2s linear;
+}
+
+
+@keyframes animate{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+.app .card::after{
+    content: "";
+    position: absolute;
+    background: #0a1f3b;
+    inset: 6px;
+    border-radius: 8px;
+}
+
+.app .card.green h1{
+    color: rgb(7, 220, 7);
+}
+
+.app .card.green h3{
+    color: rgb(57, 178, 248);
+}
+
+.app .card.green::before{
+    background-image: linear-gradient(90deg , rgb(143,223,255) , rgb(7,220,7)); 
+}
+
+.app .card.red h1{
+    color: rgb(220, 7, 92);
+}
+
+.app .card.red h3{
+    color: rgb(239, 82, 158);
+}
+
+.app .card.red::before{
+    background-image: linear-gradient(90deg ,rgb(220, 7, 92) , rgb(64,96,252)); 
+}

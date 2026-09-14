@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="./style.css" />
+        <link
+            href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+            rel="stylesheet"
+        />
+
+        <title>Folder</title>
+    </head>
+    <body>
+        <div class="folder">
+            <div class="back"></div>
+            <div class="file">
+                <h5>📆 Things to do today</h5>
+
+                <ul>
+                    <li>
+                        <input type="checkbox" />
+                        <p>Design new homepage 🐈</p>
+                    </li>
+                    <li>
+                        <input type="checkbox" />
+                        <p>Brainstorm ideas for logo 🍿</p>
+                    </li>
+                    <li>
+                        <input type="checkbox" />
+                        <p>Reply to client feedback 🌽</p>
+                    </li>
+                    <li>
+                        <input type="checkbox" />
+                        <p>Upload final design assets 🍌</p>
+                    </li>
+                </ul>
+
+                <span>Don't forget to do a <b>#daily-ui</b> challenge!</span>
+            </div>
+            <div class="front">
+                <div class="info">
+                    <div class="names">
+                        <h6>Projects 🐶</h6>
+                        <span>Notes & Files</span>
+                    </div>
+                    <div class="icons">
+                        <i class="bx bx-dots-vertical-rounded"></i>
+                        <i class="bx bxs-cog"></i>
+                    </div>
+                </div>
+                <div class="count">245 Files</div>
+            </div>
+        </div>
+
+        <script>
+            let folder = document.querySelector(".folder");
+            let file = document.querySelector(".file");
+            let headFile = document.querySelector(".file h5");
+
+            let openFolder = document.querySelector(".front");
+
+            openFolder.addEventListener("click", () => {
+                folder.classList.toggle("open");
+            });
+
+            headFile.addEventListener("click", () => {
+                file.classList.toggle("show");
+            });
+        </script>
+    </body>
+</html>

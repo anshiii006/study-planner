@@ -1,0 +1,322 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  background: #3a3947;
+  font-family: sans-serif;
+}
+
+.road {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotate(-20deg);
+}
+.road::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(
+    90deg,
+    #fff,
+    #fff 50%,
+    transparent 50%,
+    transparent 100%
+  );
+  background-size: 50px;
+  animation: road_animate 0.1s linear infinite;
+}
+@keyframes road_animate {
+  0% {
+    background-position: 50px 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+.cops {
+  position: absolute;
+  left: 350px;
+  width: 220px;
+  height: 95px;
+  background: #1d2227;
+  border-radius: 12px;
+  box-shadow: -10px 10px rgba(0, 0, 0, 0.2);
+  transform-style: preserve-3d;
+  perspective: 900px;
+  z-index: 10;
+  animation: animate_car 3s linear infinite;
+}
+.cops.two {
+  left: 800px;
+  animation-delay: 1s;
+}
+
+@keyframes animate_car {
+  0% {
+    transform: translateX(20px) translateY(-50px);
+  }
+  25% {
+    transform: translateX(-10px) translateY(0);
+  }
+  50% {
+    transform: translateX(25px) translateY(50px);
+  }
+  75% {
+    transform: translateX(-10px) translateY(0);
+  }
+  100% {
+    transform: translateX(15px) translateY(-50px);
+  }
+}
+.cops::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  left: 1px;
+  width: 4px;
+  height: 15px;
+  background: #a62735;
+  border-radius: 0 10px 10px 0;
+  box-shadow: 0 50px #a62735;
+}
+
+.cops::after {
+  content: "";
+  position: absolute;
+  top: 15px;
+  right: 1px;
+  width: 4px;
+  height: 15px;
+  background: #fff;
+  border-radius: 10px 0 0 10px;
+  box-shadow: 0 50px #fff;
+}
+
+.cops .body {
+  position: absolute;
+  background: #262c32;
+  inset: 7px 10px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.cops .body .roof {
+  position: absolute;
+  background: #3d4d66;
+  inset: 0 50px 0 20px;
+  border-radius: 25px;
+}
+.cops .body .roof::before {
+  content: "";
+  position: absolute;
+  background: #fff;
+  inset: 10px 22px;
+  border-radius: 5px;
+  z-index: 1;
+}
+.cops .body .roof::after {
+  content: "";
+  position: absolute;
+  inset: 0 63px;
+  background: #ffffff;
+}
+
+.cops .body .roof .light {
+  position: absolute;
+  background: #252222;
+  width: 9px;
+  height: 17px;
+  top: 32px;
+  right: 43px;
+  z-index: 20;
+}
+.cops .body .roof .light::before {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 17px;
+  left: 0;
+  top: 17px;
+  border-radius: 0 0 10px 10px;
+  background: red;
+  box-shadow: 0 0 10px 2px rgba(244, 82, 82, 0.9);
+  animation: light-red 0.7s linear infinite;
+}
+.cops .body .roof .light::after {
+  content: "";
+  position: absolute;
+  width: 9px;
+  height: 17px;
+  left: 0;
+  bottom: 17px;
+  background: blue;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 0 10px 2px rgba(79, 95, 242, 0.9);
+  animation: light-blue 0.7s linear infinite;
+}
+@keyframes light-blue {
+  0% {
+    background: blue;
+    box-shadow: 0 0 10px 2px rgba(79, 95, 242, 0.9);
+  }
+  50% {
+    background: red;
+    box-shadow: 0 0 10px 2px rgba(244, 82, 82, 0.9);
+  }
+  100% {
+    background: blue;
+    box-shadow: 0 0 10px 2px rgba(79, 95, 242, 0.9);
+  }
+}
+@keyframes light-red {
+  0% {
+    background: red;
+    box-shadow: 0 0 10px 2px rgba(244, 82, 82, 0.9);
+  }
+  50% {
+    background: blue;
+    box-shadow: 0 0 10px 2px rgba(79, 95, 242, 0.9);
+  }
+  100% {
+    background: red;
+    box-shadow: 0 0 10px 2px rgba(244, 82, 82, 0.9);
+  }
+}
+.cops .body i {
+  position: absolute;
+  inset: 0;
+}
+.cops .body i::before {
+  content: "";
+  position: absolute;
+  top: 16px;
+  left: 11px;
+  width: 40px;
+  height: 4px;
+  background: #fff;
+  transform-origin: right;
+  transform: rotate(40deg);
+  box-shadow: 111px -9px #fff;
+}
+
+.cops .body i::after {
+  content: "";
+  position: absolute;
+  bottom: 16px;
+  left: 11px;
+  width: 40px;
+  height: 4px;
+  background: #fff;
+  transform-origin: right;
+  transform: rotate(-40deg);
+  box-shadow: 111px 9px #fff;
+}
+
+.cops h1 {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  color: #fff;
+  font-size: 18px;
+  transform: translateY(-50%) rotate(270deg);
+  z-index: 10;
+}
+
+.light-front {
+  position: absolute;
+  top: 5px;
+  right: -2px;
+  width: 10px;
+  height: 86px;
+  border-radius: 15px;
+  transform-style: preserve-3d;
+}
+.light-front::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 7px;
+  width: 150px;
+  height: 16px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.6), transparent);
+  transform-origin: left;
+  transform: perspective(500px) rotateY(-50deg);
+}
+.light-front::after {
+  content: "";
+  position: absolute;
+  bottom: 10px;
+  left: 7px;
+  width: 150px;
+  height: 16px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.6), transparent);
+  transform-origin: left;
+  transform: perspective(500px) rotateY(-50deg);
+}
+.light-back {
+  position: absolute;
+  top: 5px;
+  left: -12px;
+  width: 5px;
+  height: 84px;
+  border-radius: 15px;
+  transform-style: preserve-3d;
+}
+.light-back::before {
+  content: "";
+  position: absolute;
+  top: 11px;
+  left: -3px;
+  width: 30px;
+  height: 12px;
+  background: linear-gradient(270deg, rgba(243, 101, 101, 0.4), transparent);
+  transform-origin: left;
+  transform: perspective(500px) rotateY(-50deg);
+}
+
+.light-back::after {
+  content: "";
+  position: absolute;
+  bottom: 11px;
+  left: -3px;
+  width: 30px;
+  height: 12px;
+  background: linear-gradient(270deg, rgba(243, 101, 101, 0.4), transparent);
+  transform-origin: left;
+  transform: perspective(500px) rotateY(-50deg);
+}
+.mirror {
+  position: absolute;
+  inset: 0;
+}
+.mirror::before {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  right: 66px;
+  width: 5px;
+  height: 10px;
+  background: #fff;
+  border-radius: 0 0 10px 0;
+}
+.mirror::after {
+  content: "";
+  position: absolute;
+  top: -8px;
+  right: 66px;
+  width: 5px;
+  height: 10px;
+  background: #fff;
+  border-radius: 0 10px 0 0;
+}

@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family: "Luckiest Guy", cursive;
+  background: #f5aa08;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 0;
+  color: #fff;
+}
+.app h4 {
+  color: #000;
+  margin: 10px 0;
+  opacity: 0;
+}
+
+.app .reset {
+  background: #fff;
+  color: #d86e00;
+  font-family: "Luckiest Guy";
+  padding: 10px 20px 5px 20px;
+  border-radius: 10px;
+  border: none;
+  line-height: 30px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 2rem;
+}
+
+.app .reset:hover {
+  background: #d86e00;
+  color: #fff;
+  transition: all 0.2s ease;
+}
+
+.app .board {
+  width: 400px;
+  height: 400px;
+  margin: 1rem 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.item {
+  width: 90px;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  background: #fde699;
+  color: #d86e00;
+  border-radius: 20px;
+  position: relative;
+  transition: 0.25s;
+  transform: rotateY(180deg);
+  cursor: pointer;
+}
+
+.item::after {
+  content: "";
+  position: absolute;
+  background: #d86e00;
+  border-radius: 20px;
+  inset: 0;
+  backface-visibility: hidden;
+  transform: rotateY(0deg);
+  transition: 0.25s;
+}
+
+.item.box-open {
+  transform: rotateY(0deg);
+}
+
+.item.box-open::after {
+  transform: rotateY(180deg);
+}
+
+.item.box-match::after {
+  transform: rotateY(180deg);
+}

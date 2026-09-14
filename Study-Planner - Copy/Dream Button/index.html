@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Dream Button</title>
+  </head>
+  <body>
+    <div class="app">
+      <button onclick="dreamButton()">Subscribe Learnstar</button>
+    </div>
+
+    <script>
+      function dreamButton() {
+        for (let i = 0; i < 60; i++) {
+          let circle = document.createElement("i");
+
+          circle.classList.add("circle");
+
+          const randomX = (Math.random() - 0.5) * window.innerWidth;
+          const randomY = (Math.random() - 0.5) * window.innerHeight;
+
+          circle.style.setProperty("--x", `${randomX}px`);
+          circle.style.setProperty("--y", `${randomY}px`);
+
+          const randomSize = Math.random() * 20 + 2;
+          circle.style.width = `${randomSize}px`;
+          circle.style.height = `${randomSize}px`;
+
+          const randomDuration = Math.random() * 2 + 0.5;
+          circle.style.animation = `animate ${randomDuration}s ease-out forwards`;
+
+          document.body.appendChild(circle);
+        }
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  background: #f9f9f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  width: 80px;
+  height: 80px;
+  background: #fff;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.06);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.button span {
+  width: 50px;
+  height: 5px;
+  background: #703edd;
+  position: absolute;
+  border-radius: 10px;
+  transition: 0.4s;
+}
+.button span:first-child {
+  transform: translateY(-15px);
+  width: 25px;
+  left: 15px;
+}
+.button span:last-child {
+  transform: translateY(15px);
+  width: 30px;
+  left: 15px;
+}
+
+.button.active span:nth-child(2) {
+  transform: translateX(80px);
+}
+
+.button.active span:first-child {
+  width: 50px;
+  transform: translateY(0) rotate(45deg);
+}
+
+.button.active span:last-child {
+  width: 50px;
+  transform: translateY(0) rotate(315deg);
+  transition-delay: 0.2;
+}
